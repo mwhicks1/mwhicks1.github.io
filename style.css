@@ -1,0 +1,159 @@
+
+table, body {
+    font-family: Verdana, Arial, Helvetica, Sans-serif;
+    font-size: 14px;
+    color: #000;
+    background-color: #fff;
+    line-height: 160%;
+}
+
+a,a:link,a:visited,a:active {
+    color: cobalt;
+    background: inherit;
+    outline: none; 
+}
+
+a:hover {
+	color: #9597A0;
+    background: inherit;
+	text-decoration: none;
+}
+
+
+#ol.papers 
+{
+    margin: 0;
+    padding: 10px 0 0 20px ;
+}
+
+#ol.papers li
+{
+    padding-bottom:10px;
+}
+
+
+#ul.flowlist
+{
+	padding: 0;
+	float: right;
+}
+
+#ul.flowlist li
+{
+	display: inline;
+}
+
+#ul.flowlist li a
+{
+    padding: 0 8px;
+    text-decoration: none;
+    border-left: 1px solid #000;
+}
+
+#ul.flowlist li:first-child a {
+    border: none;
+}
+
+
+#.coauthors
+{
+    font-style: italic;
+}
+
+#.conference
+{
+    display: block;
+}
+
+#.abstract
+{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+#.abstract p
+{
+    font-size: 90%;
+    line-height: 120%;
+}
+
+
+#.description
+{
+    border: 1px dashed #000;
+    background: #EEEEEE;
+    color: inherit;
+    padding: 0 15px 5px 15px;
+}
+
+#.artwork {
+    padding:10px;
+    vertical-align: middle;
+    border-top: 1px dashed #000;
+    border-bottom: 1px dashed #000;
+    border-right: 1px dashed #000;
+}
+
+
+.list
+{
+    margin: 0;
+    padding-left: 30px !important;
+    list-style: none !important;
+    text-indent: -15px !important;
+    padding-bottom: 10px;
+
+    list-style: disc;
+    padding-left: 40px;
+    text-indent: 0px;
+}
+
+.list li {
+    background-repeat: no-repeat;
+}
+
+.list li:before {
+    content: "\2022 ";
+    color: #02264F;
+    padding-right:3px;
+}
+
+
+
+h1 {
+    margin-top: 20px;
+    margin-bottom: 5px;
+	font-size: 150%;
+#	color: #073891;
+    background: inherit;
+}
+
+
+h2 {
+    margin-top: 10px;
+	font-size: 145%;
+#	color: #9597A0;
+    background: inherit;
+}
+
+
+h3 {
+    margin-top: 20px;	
+	font-size: 125%;
+#	color: #3C67B7;
+    background: inherit;
+}
+
+h3:first-child {
+    margin-top: 5px;
+}
+
+
+
+h4 { 
+	font-size: 125%;
+#	color: #073891;
+    background: inherit;
+}
+
+
