@@ -1,8 +1,7 @@
 <font size="+1"><b>Automating NISQ Application Design with Meta Quantum Circuits with
   Constraints (MQCC)</b>.
  Haowei Deng, Yuxiang Peng, Michael Hicks, and Xiaodi Wu.
- <em>ACM Transactions on Quantum Computing (TQC)</em>, 2023.
- Accepted.</font><p>
+ <em>ACM Transactions on Quantum Computing (TQC)</em>, (3), April 2023.</font><p>
 Near-term intermediate scale quantum (NISQ) computers are likely to have very restricted hardware resources, where precisely controllable qubits are expensive, error-prone, and scarce. Programmers of such computers must therefore balance trade-offs among a large number of (potentially heterogeneous) factors specific to the targeted application and quantum hardware. To assist them, we propose Meta Quantum Circuits with Constraints (MQCC), a meta-programming framework for quantum programs. Programmers express their application as a succinct collection of normal quantum circuits stitched together by a set of (manually or automatically) added meta-level choice variables, whose values are constrained according to a programmable set of quantitative optimization criteria. MQCC’s compiler generates the appropriate constraints and solves them via an SMT solver, producing an optimized, runnable program. 
 We showcase a few MQCC's applications for its generality including an automatic generation of efficient error syndrome extraction schemes for fault-tolerant quantum error correction with heterogeneous qubits and an approach to writing approximate quantum Fourier transformation and quantum phase estimation that smoothly trades off accuracy and resource use.
 We also illustrate that MQCC can easily encode prior one-off NISQ application designs ---multi-programming (MP), crosstalk mitigation (CM)--- as well as a combination of their optimization goals (i.e., a combined MP-CM).
@@ -13,7 +12,9 @@ We also illustrate that MQCC can easily encode prior one-off NISQ application de
   title = {Automating {NISQ} Application Design with Meta Quantum
 Circuits with Constraints ({MQCC})},
   journal = {{ACM} Transactions on Quantum Computing (TQC)},
-  note = {Accepted},
+  vol = 4,
+  number = 3,
+  month = apr,
   year = 2023
 }
 </pre>
