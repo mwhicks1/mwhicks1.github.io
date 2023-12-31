@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>week6_pen_testing</title>
+  </head>
+  <body>
+    <h1>Week 6: Penetration Testing and Fuzz Testing</h1>
+    Last week we looked at how automated tools could be used to assist
+    developers and testers in finding important security bugs. We
+    focused in particular on <i>static analysis</i> and <i>symbolic
+      execution</i> as technologies.<br>
+    <br>
+    This week, we look at the broader practice of <i>penetration
+      testing</i> of which tools using these technologies form some
+    part, but other practices and techniques are of interest too. We
+    will focus in particular on <i>fuzz testing</i>, a technique that
+    attempts to find potentially security-relevant software failures.<br>
+    <h2>Learning Objectives</h2>
+    After the completion of this week's material, you will:<br>
+    <ul>
+      <li>Understand what penetration testing is and what it achieves</li>
+      <li>Know the basics of several state-of-the-art penetration
+        testing tools</li>
+      <li>Understand fuzz testing techniques and how they compare</li>
+      <li>Be aware of several state-of-the-art fuzz testing tools</li>
+    </ul>
+    <h2>Video Lectures</h2>
+    <ul>
+      <li><a moz-do-not-send="true" href="assets/Pen_testing_intro.mp4">Penetration
+          Testing: Introduction</a> (10:11)</li>
+      <li><a moz-do-not-send="true"
+          href="assets/Pen_testing_techniques.mp4">Penetration Testing:
+          Techniques and Tools</a> (14:28)</li>
+      <li><a moz-do-not-send="true" href="assets/Fuzzing.mp4">Fuzz
+          Testing: Techniques and Tools</a> (15:13)</li>
+    </ul>
+    <h3>Break out: Interview with Eric Eames</h3>
+    In September 2014, Mike interviewed <a moz-do-not-send="true"
+      href="http://www.linkedin.com/pub/eric-eames/68/7b/590">Eric Eames</a>,
+    at the time a Principal Security Consultant at FusionX. In this
+    interview we discussed principles and practice of penetration
+    testing. <b>The interview is <i>required</i></b> from an
+    assessment perspective -- some quiz material will be drawn from this
+    interview's content.<br>
+    <br>
+    <a moz-do-not-send="true" href="assets/Eric_Eames_interview.mp4">Mike
+
+      Hicks interviews Eric Eames</a> (31:46). Highlights, indexed by
+    time:<br>
+    <ul>
+      <li>start - Introduction and background</li>
+      <li>1:33 - Penetration testing: what is it?</li>
+      <li>5:04 - Tools and techniques used in penetration testing</li>
+      <li>9:43 - Common technical and human mistakes in engagements</li>
+      <li>15:05 - Defining an engagement; pen testers as outsiders or
+        insiders</li>
+      <li>17:50 - Surprising discoveries</li>
+      <li>19:33 - What else, in addition to penetration testing can help
+        ensure security</li>
+      <li>23:05 - Undergrad education -- what should we do?</li>
+      <li>26:39 - Prognosis for security, looking ahead</li>
+    </ul>
+    <h3>Break out: Interview with Patrice Godefroid</h3>
+    In September 2014, Mike had the pleasure of interviewing <a
+      moz-do-not-send="true"
+      href="http://research.microsoft.com/en-us/um/people/pg/">Patrice
+      Godefroid</a>, who is a Partner Researcher at Microsoft Research.
+    In this interview we discussed principles and practice of fuzz
+    testing in general, and whitebox fuzz testing in particular,
+    especially as it has come to be used within Microsoft. The interview
+    is <i>optional</i> from an assessment perspective, but recommended
+    -- there will no quiz questions on it per se, but it might help
+    provide context about material from last week and this week.<br>
+    <br>
+    <a moz-do-not-send="true"
+      href="assets/Patrice_Godefroid_interview.mp4">Mike Hicks
+      interviews Patrice Godefroid</a> (35:06). Highlights, indexed by
+    time:<br>
+    <ul>
+      <li>start - Introduction and background</li>
+      <li>1:08 - The state of the art in automated vulnerability
+        detection</li>
+      <li>5:50 - What drove your interest in working on model
+        checking/analysis?</li>
+      <li>10:13 - Comparing different fuzz testing techniques</li>
+      <li>19:21 - The story of deployment of fuzzing at Microsoft for
+        whitebox fuzzing</li>
+      <li>24:57 - Trends in the use of automated analysis tools</li>
+      <li>31:06 - Open problems in automated testing tool development</li>
+    </ul>
+    In 2020, <a moz-do-not-send="true"
+href="https://www.microsoft.com/en-us/research/blog/a-brief-introduction-to-fuzzing-and-why-its-an-important-tool-for-developers/">Patrice
+
+      wrote a nice review article about fuzzing</a>.<br>
+    <h2>Supplemental Links</h2>
+    Here we present links to supplemental material, in case you are
+    interested to read it (none is required for assessment).<br>
+    <ul>
+      <li><a moz-do-not-send="true"
+          href="http://www.rand.org/pubs/reports/R609-1/index2.html">Ware
+
+          report</a> - introduced the idea of penetration testing, as
+        well as many other foundational ideas in systems security</li>
+      <li><a moz-do-not-send="true"
+href="http://www.iacertification.org/cpt_certified_penetration_tester.html">CPT
+
+          (pen testing) certification</a> - establish your credentials
+        as a pen tester</li>
+      <li><a moz-do-not-send="true"
+          href="https://www.defcon.org/html/links/dc-ctf.html">Defcon
+          CTF contest</a> - be the first to find vulnerabilities in
+        other competitors' systems and patch them in your own</li>
+    </ul>
+    <h3>Penetration testing tools</h3>
+    These tools are all free, or have free versions.<br>
+    <ul>
+      <li><a moz-do-not-send="true" href="http://nmap.org/">NMAP</a> -
+        "network mapper" scans network to find what's connected to it</li>
+      <li><a moz-do-not-send="true"
+          href="https://github.com/zaproxy/zaproxy">Zap</a> - web proxy
+        and automatic vulnerability scanner</li>
+      <li><a moz-do-not-send="true" href="http://portswigger.net/burp">Burp
+
+          suite</a> - Several pen testing tools (some versions are free)</li>
+      <li><a moz-do-not-send="true"
+          href="http://www.offensive-security.com/metasploit-unleashed/Main_Page">Metasploit</a>
+        - customizable platform for developing, testing, and using
+        exploit code.</li>
+      <li><a moz-do-not-send="true" href="http://www.kali.org/">Kali</a>
+        - Linux distribution with pre-installed pen testing tools.</li>
+    </ul>
+    <h3>Fuzz testing tools</h3>
+    Again, these tools are all free, or have free versions. <br>
+    <ul>
+      <li><a moz-do-not-send="true"
+          href="http://lcamtuf.coredump.cx/afl/">American Fuzzy Lop
+          (AFL)</a> - popular, mutation-based, gray-box fuzzer</li>
+      <li><a moz-do-not-send="true"
+          href="https://llvm.org/docs/LibFuzzer.html">Libfuzzer</a> - a
+        fuzzer that is similar in spirit to AFL, developed at Google</li>
+      <li><a moz-do-not-send="true"
+          href="https://google.github.io/oss-fuzz/">OSSFuzz</a> - a
+        Google service for fuzzing open-source software projects; uses
+        AFL, Libfuzzer, and Honggfuzz</li>
+      <li><a moz-do-not-send="true"
+          href="https://gitlab.com/akihe/radamsa">Radamsa</a> -
+        mutation-based black-box fuzzer</li>
+      <li><a moz-do-not-send="true"
+          href="http://resources.infosecinstitute.com/intro-to-fuzzing/">SPIKE</a>
+        - network fuzzing framework</li>
+    </ul>
+    <h2>Quiz</h2>
+    The <a moz-do-not-send="true" href="assets/week6_quiz.docx">quiz
+      for this week</a> covers all of the material for this week.<br>
+    <h2>Project</h2>
+    There is no new project for this week. All outstanding projects and
+    assessments are due by 8am ET the week after the course ends.
+  </body>
+</html>

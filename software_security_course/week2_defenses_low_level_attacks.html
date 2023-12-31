@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>week2_defenses_low_level_attacks</title>
+  </head>
+  <body>
+    <h1>Week 2: Defenses against low-level attacks</h1>
+    We continue our discussion of low-level software security by
+    understanding ways to defend against memory-based attacks like
+    buffer overflows and format string attacks, introduced last week.<br>
+    <br>
+    Defenses fall into two categories: (1) <i>automatic</i>, and (2) <i>manual</i>
+    (based on disciplined programming styles). We will also look at a
+    sophisticated attack, called <i>return oriented programming</i>,
+    that aims to overcome some of the automatic defenses, as well as an
+    experimental defense against it. In the end, the most sure defense
+    against low level attacks is to program with a <i>memory-safe</i>
+    (or better yet, a <i>type-safe</i>) programming language in the
+    situations that's possible.<br>
+    <h2>Learning Objectives</h2>
+    After the completion of this week's material, you will be able to:<br>
+    <ul>
+      <li>Comprehend the meaning of the properties <i>memory safety</i>,
+        and <i>type safety</i> and why programs enjoying these
+        properties are immune from memory based attacks</li>
+      <li>Understand several common automatic defenses against
+        memory-based attacks, including <i>stack canaries, data
+          execution protection (DEP)</i>, and <i>address space layout
+          randomization (ASLR)</i></li>
+      <li>Understand how attacks based on <i>return-oriented
+          programming (ROP)</i> work</li>
+      <li>Understand the concept of <i>control-flow integrity (CFI)</i>
+        and how it can defeat ROP-based attacks</li>
+      <li>Understand a series of rules of thumb for programming in C so
+        as to avoid memory-based attacks</li>
+    </ul>
+    <h2>Video Lectures</h2>
+    <ul>
+      <li><a moz-do-not-send="true"
+          href="assets/Defenses_Against_Low-Level_Attacks.mp4">Defenses
+          Against Low-Level Attacks: Introduction</a> (2:58)</li>
+      <li><a moz-do-not-send="true" href="assets/Memory_Safety.mp4">Memory
+
+          Safety</a> (16:56)</li>
+      <li><a moz-do-not-send="true" href="assets/Type_Safety.mp4">Type
+          Safety</a> (4:39)</li>
+      <li><a moz-do-not-send="true" href="https://youtu.be/pObdbiQJpsk">Avoiding
+          Exploitation</a> (9:38)</li>
+      <li><a moz-do-not-send="true"
+          href="assets/Return_Oriented_Programming.mp4">Return-Oriented
+          Programming</a> (11:30)</li>
+      <li><a moz-do-not-send="true" href="https://youtu.be/lrkNs5qo5Cw">Control-Flow
+
+          Integrity</a> (14:51)</li>
+      <li><a moz-do-not-send="true" href="assets/Secure_Coding.mp4">Secure
+
+          Coding</a> (18:29)</li>
+    </ul>
+    <h2>Required Readings</h2>
+    The following two blog posts cover the topics of memory safety and
+    type safety in somewhat greater depth<br>
+    <ul>
+      <li><a moz-do-not-send="true"
+          href="http://www.pl-enthusiast.net/2014/07/21/memory-safety/">What
+
+          is memory safety?</a></li>
+      <li><a moz-do-not-send="true"
+          href="http://www.pl-enthusiast.net/2014/08/05/type-safety/">What
+
+          is type safety?</a></li>
+    </ul>
+    <h2>Quiz</h2>
+    The <a moz-do-not-send="true" href="assets/week2_quiz.docx">quiz
+      for this week</a> covers all of this week's material.<br>
+    <h2>Supplemental readings and links</h2>
+    The following readings are optional: Check them out if you are
+    interested in learning more about material we've covered in lecture
+    (many were explicitly linked in the lecture slides).<br>
+    <h3>Attacks and modern defenses, generally</h3>
+    <ul>
+      <li><a moz-do-not-send="true"
+          href="http://cseweb.ucsd.edu/~hovav/papers/sppgmb04.html">On
+          the effectiveness of Address Space Randomization</a>, by
+        Shacham, Page, Pfaff, Goh, Modadugu, and Boneh - showed how ASLR
+        implementations on 32-bit systems can be defeated relatively
+        easily</li>
+      <li><a moz-do-not-send="true"
+href="http://paulmakowski.wordpress.com/2011/01/25/smashing-the-stack-in-2011/">Smashing
+
+          the Stack in 2011</a> - Paul Makowski revisits the <a
+          moz-do-not-send="true"
+          href="http://insecure.org/stf/smashstack.html">1996 Aleph One
+          article</a> (on the supplemental reading list from last week),
+        considering defenses at that time</li>
+      <li><a moz-do-not-send="true"
+href="http://www.google.com/search?lr=&amp;ie=UTF-8&amp;oe=UTF-8&amp;q=Low-Level+Software+Security+by+Example+Erlingsson+Younan+Piessens">Low-level
+
+          software security by example</a>, by Erlingsson, Younan,
+        Piessens, describes several low-level attacks and defenses.</li>
+    </ul>
+    <h3>Return-oriented Programming (ROP)</h3>
+    <ul>
+      <li><a moz-do-not-send="true"
+          href="https://cseweb.ucsd.edu/~hovav/dist/geometry.pdf">Geometry
+
+          of Innocent Flesh on the Bone: Return to libc without Function
+          Calls (on the x86)</a>, by Hovav Shacham - introduced the
+        idea, and the term, return oriented programming</li>
+      <li><a moz-do-not-send="true"
+href="https://www.usenix.org/legacy/event/sec11/tech/full_papers/Schwartz.pdf">Q:
+
+          Exploit Hardening Made Easy</a>, by Schwartz, Avgerinos, and
+        Brumley - explains how to automatically generate ROP exploits</li>
+      <li><a moz-do-not-send="true"
+          href="http://www.scs.stanford.edu/brop/">Blind ROP</a> -
+        return-oriented programming without source code, automatically</li>
+    </ul>
+    <h3>Control-flow integrity (CFI)</h3>
+    <ul>
+      <li><a moz-do-not-send="true"
+          href="http://research.microsoft.com/pubs/64250/ccs05.pdf">Control
+
+          Flow Integrity</a>, by Abadi, Budiu, Erlingsson, and Ligatti -
+        paper that introduced CFI</li>
+      <li><a moz-do-not-send="true"
+          href="https://clang.llvm.org/docs/ControlFlowIntegrity.html">CFI
+
+          in Clang/LLVM</a> - modern versions of the Clang/LLVM compiler
+        will introduce various kinds of CFI support via compilation
+        flags. <a moz-do-not-send="true"
+href="https://www.redhat.com/en/blog/fighting-exploits-control-flow-integrity-cfi-clang">RedHat
+
+          has a nice tutorial description of it</a>.</li>
+      <li><a moz-do-not-send="true"
+href="https://docs.microsoft.com/en-us/windows/win32/secbp/control-flow-guard">Microsoft's
+
+          Control Flow Guard (CFG)</a> implements a CFI-style defense to
+        Visual Studio projects; it is used when building the distributed
+        executables of Internet Explorer and the Edge browser. Some
+        discussion about CFG as compared to CFI is given in this <a
+          moz-do-not-send="true"
+href="https://blog.trailofbits.com/2016/12/27/lets-talk-about-cfi-microsoft-edition/">blog
+
+          post</a>. Both <a moz-do-not-send="true"
+href="https://msrc-blog.microsoft.com/2020/08/17/control-flow-guard-for-clang-llvm-and-rust/">CFG
+
+          and CFI are now available in Clang/LLVM</a>.</li>
+      <li>See also the paper <i>Low-level software security by example</i>,
+        above.</li>
+    </ul>
+    <h3>Secure coding</h3>
+    These are a few references linked in the lecture slides. We will
+    cover secure coding and design in more depth during week 4.<br>
+    <ul>
+      <li><a moz-do-not-send="true"
+href="https://wiki.sei.cmu.edu/confluence/display/c/SEI+CERT+C+Coding+Standard">SEI
+
+          CERT C coding standard</a></li>
+      <li><a moz-do-not-send="true"
+href="http://www.dwheeler.com/secure-programs/Secure-Programs-HOWTO/internals.html">Secure
+
+          Programming HOWTO</a> by David Wheeler</li>
+      <li><a moz-do-not-send="true"
+          href="http://nob.cs.ucdavis.edu/bishop/secprog/robust.html">Robust
+
+          Programming</a> by Matt Bishop</li>
+      <li><a moz-do-not-send="true"
+          href="http://plasma.cs.umass.edu/emery/diehard.html">DieHard
+          project</a> - drop-in replacement for malloc that uses
+        randomization to defend against heap-based exploits</li>
+    </ul>
+    <h2>Project</h2>
+    There is <b>no new project</b> this week. Don't forget to complete
+    <a moz-do-not-send="true" href="project1_buffer_overflow.html">Project
+
+      1</a> on exploiting buffer overflows. Take the <a
+      moz-do-not-send="true" href="assets/week1_BOF_quiz.docx">project
+      quiz</a> when you have completed that project.<br>
+    <h2>Notes on Course Content</h2>
+    Writing in October 2020, a number of things have changed since 2015.
+    Here are some of them.<br>
+    <h3>Enforcing Memory Safety</h3>
+    In the lecture, I wrote "coming soon, Intel MPX!” Since then, Intel
+    MPX has come ... and gone. As summarized on the <a
+      moz-do-not-send="true"
+      href="https://en.wikipedia.org/wiki/Intel_MPX">Wikipedia MPX page</a>,
+    "In practice, there have been too many flaws discovered in the
+    design for it to be useful, and support has been deprecated or
+    removed from most compilers and operating systems.” As a specific
+    example, the gcc compiler used to provide a compiler extension that
+    could take advantage of the MPX instructions, but that <a
+      moz-do-not-send="true"
+href="https://www.phoronix.com/scan.php?page=news_item&amp;px=MPX-Removed-From-GCC9/">support
+
+      has now been deprecated</a>. A key problem is that the extra
+    hardware doesn’t actually improve performance over software-only
+    implementations, and in some cases performance could be worse! <br>
+    <br>
+    The <a moz-do-not-send="true"
+      href="https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/"><b>CHERI
+
+        (Capability Hardware Enhanced RISC Instructions)</b></a> project
+    is a more promising alternative. It defines a set of hardware
+    extensions that provide capabilities, which can be used for
+    enforcing memory safety. Initial designs targeted just spatial
+    safety, but later work targeted temporal safety as well. Ongoing
+    effort has focused on developing a <a moz-do-not-send="true"
+      href="https://www.cl.cam.ac.uk/techreports/UCAM-CL-TR-947.pdf">C
+      compiler that targets CHERI</a>.<br>
+    <br>
+    <b>In</b> late 2015 Microsoft began developing <a
+      moz-do-not-send="true" href="https://www.checkedc.org/"><b>Checked
+        C</b></a>, an extension to C that aims to ensure spatial safety
+    (and, to a degree, type safety); it has since been forked and is run
+    by an independent foundation. Checked C is implemented as an <a
+      moz-do-not-send="true"
+      href="https://github.com/microsoft/checkedc-clang">extension to
+      the open-source Clang/LLVM compiler</a>; the compiler inserts
+    run-time checks when needed for enforcing safety. Recent work (e.g,.
+    in a <a moz-do-not-send="true"
+      href="https://cs.rochester.edu/u/jzhou41/papers/freebsd_checkedc.pdf">partial
+
+      refactor of the FreeBSD operating system to use Checked C</a>)
+    shows such checks to be relatively inexpensive, e.g., around a few
+    percent. Of course, the compiler is still under development so
+    things may change. I think very highly of this effort, so I am
+    working with the Checked C team both to design the language and to
+    develop tools to automatically migrate legacy C code to Checked C.<br>
+    <br>
+    Another mature effort to <b>ensure partial memory safety is </b><a
+      moz-do-not-send="true"
+      href="https://github.com/google/sanitizers/wiki/AddressSanitizer"><b>Address
+
+        Sanitizer (ASAN)</b></a>, but ASAN-ized code is much slower
+    (e.g., 2x slowdown) with checks inserted, so it would not normally
+    be used in production.<br>
+    <h3>Enforcing Type Safety</h3>
+    In the lecture, I said that modern languages are emerging that aim
+    to ensure type safety while also providing good performance. I
+    mentioned <br>
+    <a moz-do-not-send="true" href="https://golang.org/">Go</a>, <a
+      moz-do-not-send="true" href="https://www.rust-lang.org/">Rust</a>,
+    and <a moz-do-not-send="true"
+      href="https://developer.apple.com/swift/">Swift</a>, in
+    particular. Since 2015, all three of these languages have become
+    better developed and more popular. Indeed, I would say that <b>Rust
+      has emerged as a strong contender to be the "go to" safe systems
+      programming language</b>. Rust's notion of type safety implies not
+    only memory safety, but also freedom from <br>
+    <a moz-do-not-send="true"
+      href="https://blog.regehr.org/archives/490">data races</a>. These
+    owe to defects in concurrent programs, are difficult to find and
+    debug, and can have security implications; Rust's type system
+    ensures their absence. Developers love these benefits among others:
+    According to Stack Overflow's annual poll of developers, <a
+      moz-do-not-send="true"
+href="https://stackoverflow.blog/2020/06/05/why-the-developers-who-use-rust-love-it-so-much/">Rust
+
+      has been the year's "most loved" language for five years in row</a>
+    !<br>
+    <h3>Avoiding Exploitation</h3>
+    In the lecture, I talked about several defenses that aim to make
+    memory safety bugs harder to exploit, e.g., address space layout
+    randomization (ASLR) and stack canaries. These defenses are still
+    relevant today, but have evolved while facing new threats.<br>
+    <br>
+    Using the Clang/LLVM compiler, stack canaries are enabled with the
+    -fstack-protector flag. It also provides another defense called <br>
+    <a moz-do-not-send="true"
+      href="https://en.wikipedia.org/wiki/Shadow_stack"><i><b>shadow
+          stacks</b></i></a><b>, which has the same goal as stack
+      canaries but is more dependable</b>, while still being low
+    overhead. The basic idea is to separate critical metadata, notably
+    return addresses, into a separate stack so that it will not be
+    overwritten by a stack-based buffer overflow. The <a
+      moz-do-not-send="true"
+      href="https://clang.llvm.org/docs/SafeStack.html">Clang/LLVM
+      compiler's -fsanitize=safe-stack flag enables shadow stacks</a>
+    (called "safe stacks"); the gcc compiler supports them as well.<br>
+    <br>
+    ASLR is widely deployed, e.g., on <a moz-do-not-send="true"
+href="https://www.networkworld.com/article/3331199/what-does-aslr-do-for-linux.html">Linux</a>,
+    MacOS, IOS, and <a moz-do-not-send="true"
+href="https://techcommunity.microsoft.com/t5/windows-10-security/turn-on-mandatory-aslr-in-windows-security/m-p/1186989">Windows</a>
+    (though for the last it is turned off by default). ASLR is effective
+    when the base addresses of randomized process memory segments are
+    hard to guess. A common part of an attack against an ASLR-protected
+    system is to exploit a bug that leaks a base address. Software and
+    hardware side channels, e.g., due to caches, are a <a
+      moz-do-not-send="true"
+      href="http://www.minemu.org/papers/anc_ndss17.pdf">vector for such
+      leaks</a>. Indeed, as mentioned last week, the <a
+      moz-do-not-send="true" href="https://spectreattack.com/">Spectre
+      and Meltdown bugs</a> have shown that hardware-based side channels
+    are a significant threat. Moreover, recent work has shown that <a
+      moz-do-not-send="true"
+      href="https://download.vusec.net/papers/pirop_eurosp18.pdf">information
+
+      disclosure is not always needed to defeat ASLR</a>. As such, it
+    remains to be seen whether ASLR remains an effective defense in the
+    future.<br>
+    <h3>Control Flow Integrity (CFI)</h3>
+    In 2015, CFI was being seriously explored as a viable defense. Full
+    CFI, as originally proposed, added too much performance overhead, so
+    researchers were exploring less expensive alternatives with less
+    protection. I updated the links in the supplemental material, above,
+    to discuss CFI a bit more.<br>
+    <br>
+    The <a moz-do-not-send="true"
+      href="https://clang.llvm.org/docs/ControlFlowIntegrity.html"><b>Clang/LLVM
+
+        compiler supports CFI</b></a><b> in various forms</b>; <a
+      moz-do-not-send="true"
+href="https://blog.trailofbits.com/2016/10/17/lets-talk-about-cfi-clang-edition/">Trail
+
+      of Bits has written a nice tutorial about it</a>. One variant is <a
+      moz-do-not-send="true"
+href="https://www.usenix.org/conference/usenixsecurity14/technical-sessions/presentation/tice">forward-edge
+
+      only CFI</a> (FO-CFI), which does not protect returns via
+    addresses on the stack, but does protect calls via function pointers
+    and virtual method tables. (Shadow stacks could be enabled, at low
+    cost, to provide protection for return addresses.) For FO-CFI, "a
+    performance overhead of less than 1% has been measured by running
+    the Dromaeo benchmark suite against an instrumented version of the
+    Chromium web browser." <a moz-do-not-send="true"
+      href="https://nebelwelt.net/blog/20181226-CFIeval.html">Mathias
+      Payer also did a detailed study of Clang/LLVM CFI</a>, and found
+    per-dispatch overheads at around 20% (but forward-edge dispatches
+    are relatively infrequent operations in the code). The <a
+      moz-do-not-send="true"
+href="https://www.chromium.org/developers/testing/control-flow-integrity">Chrome
+
+      team planned to include Clang's CFI protections in the browser</a>.
+    (Note that <a moz-do-not-send="true"
+href="https://blog.llvm.org/2018/03/clang-is-now-used-to-build-chrome-for.html">clang
+
+      is used to build Chrome for Windows</a>, too.)<br>
+    <br>
+    The flip side of the lowered overhead is the lowered protection. How
+    low is too low? <a moz-do-not-send="true"
+      href="https://arxiv.org/pdf/1910.01485.pdf">Muntean et al
+      developed an empirical framework for evaluating the different
+      levels of protection offered by CFI</a> which aims to determine
+    the post-CFI-protected attack surface on particular applications;
+    for example, it will determine the number of possible allowed
+    targets per callsite, for each CFI policy (fewer is better). These
+    surfaces can then be compared to understand a ranking of the offered
+    defense, compared to its overhead.
+  </body>
+</html>

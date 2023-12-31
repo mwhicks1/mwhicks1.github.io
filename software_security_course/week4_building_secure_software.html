@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>building_secure_software</title>
+  </head>
+  <body>
+    <h1>Week 4: Building Secure Software</h1>
+    Most of our time so far has been spent focusing on
+    implementation-level issues---<i>bugs</i> that constitute
+    vulnerabilities, and means of avoiding those bugs, mitigating them,
+    or recovering from them. But we must also be concerned about <i>flaws</i>,
+    which are security problems in a software system's design.<br>
+    <br>
+    To address both flaws and bugs effectively, we need to consider
+    security through the entire development process. In this unit, we
+    will step back and look at what that entails, taking on the goal of
+    <i>building security in</i>.<br>
+    <h2>Learning Objectives</h2>
+    After the completion of this week's material, you will be able to:<br>
+    <ul>
+      <li>Identify how security-minded thinking, or security
+        engineering, is integrated into the software development process</li>
+      <li>Enumerate a series of design principles for writing secure
+        software</li>
+      <li>Explain how such principles can be violated, pointing to
+        actual incidents</li>
+      <li>Put these principles into practice by drawing inspiration from
+        well-designed, secure systems</li>
+    </ul>
+    <h2>Video Lectures</h2>
+    <ul>
+      <li><a moz-do-not-send="true"
+          href="assets/Designing_secure_software.mp4">Designing and
+          Building Secure Software: Introduction</a> (7:23)</li>
+      <li><a moz-do-not-send="true" href="assets/Threat_modeling.mp4">Threat
+
+
+          modeling (Architectural risk analysis)</a> (9:25)</li>
+      <li><a moz-do-not-send="true" href="Security_Requirements.mp4">Security
+
+
+          Requirements</a> (13:56)</li>
+      <li><a moz-do-not-send="true" href="https://youtu.be/6WdvIwqlVNI">Avoiding
+
+
+          Flaws with Principles</a> (8:12)</li>
+      <li><a moz-do-not-send="true" href="Favor_Simplicity.mp4">Design
+          Category: Favor Simplicity</a> (10:50)</li>
+      <li><a moz-do-not-send="true" href="Trust_with_reluctance.mp4">Design
+
+
+          Category: Trust With Reluctance</a> (12:32)</li>
+      <li><a moz-do-not-send="true"
+          href="https://www.youtube.com/watch?v=cxBPbJcqZtg">Design
+          Category: Defense in Depth, Monitoring/Traceability</a> (5:20)</li>
+      <li><a moz-do-not-send="true" href="assets/Top_Design_Flaws.mp4">Top
+
+
+          Design Flaws</a> (9:18)</li>
+      <li><a moz-do-not-send="true" href="https://youtu.be/vS420g1egfw">Case
+
+
+          Study: Very Secure FTP Daemon</a> (12:24)</li>
+    </ul>
+    <h3>Break out: Interview with Gary McGraw</h3>
+    In August 2014, Mike had the pleasure of interviewing <a
+      moz-do-not-send="true" href="https://www.garymcgraw.com/">Gary
+      McGraw</a>. Gary is a celebrated author and authority on software
+    security, which he practiced professionally as the CTO of <a
+      moz-do-not-send="true"
+href="https://www.synopsys.com/blogs/software-security/synopsys-acquires-cigital-codiscope/">Cigital,
+
+
+      Inc. until they were acquired by SynopSys in 2016</a>. In this
+    interview we discussed many things relevant to this week's topic of
+    secure design and secure development. The interview is optional from
+    an assessment perspective -- there will no quiz questions on it (but
+    note it may help cement topics in the lectures). We hope you find it
+    interesting!<br>
+    <a moz-do-not-send="true" href="assets/Gary_McGraw_Interview.mp4"><br>
+      Mike Hicks interviews Gary McGraw</a> (40:52). Highlights, indexed
+    by time:<br>
+    <ul>
+      <li>start-3:47 Gary's background and early activities in software
+        security</li>
+      <li>3:48-8:10 Software security: What, why, and who</li>
+      <li>8:10-14:55 Security throughout the development lifecycle:
+        Secure design, not just secure coding</li>
+      <li>14:56-18:27 Moving towards more secure development practices</li>
+      <li>18:27-26:58 <a moz-do-not-send="true"
+          href="http://bsimm.com/">Building Security In Maturity Model
+          (BSIMM)</a></li>
+      <li>26:58-32:42 Measuring security: How can BSIMM help?</li>
+      <li>32:42-37:19 Looking ahead: Improving secure design</li>
+      <li>37:19-40:52 Closing: Free time, art, music, and computer
+        science</li>
+    </ul>
+    <h2>Supplemental Links</h2>
+    These links go into more depth about topics covered during lecture.<br>
+    <ul>
+      <li><a moz-do-not-send="true"
+          href="http://web.mit.edu/Saltzer/www/publications/protection/">Protection
+
+
+          of Information in Computer Systems</a>, by Saltzer and
+        Shroeder. Classic paper from 1975 that is still highly relevant
+        today.</li>
+      <li>Bruce Schneier's <a moz-do-not-send="true"
+href="https://www.schneier.com/essays/archives/1999/11/a_plea_for_simplicit.html">plea
+
+
+          for simplicity</a> in computer systems.</li>
+      <li><a moz-do-not-send="true"
+href="https://ieeecs-media.computer.org/media/technical-activities/CYBSI/docs/Top-10-Flaws.pdf">Avoiding
+
+
+          the top 10 Security Design Flaws</a>, brought to you be the <a
+          moz-do-not-send="true"
+          href="http://cybersecurity.ieee.org/center-for-secure-design.html">IEEE
+
+
+          Center on Secure Design</a></li>
+      <li><a moz-do-not-send="true"
+          href="https://security.appspot.com/vsftpd.html">Very Secure
+          FTPD</a>; here is some description of VSFTPD's <a
+          moz-do-not-send="true"
+          href="https://security.appspot.com/vsftpd/DESIGN.txt">design</a>,
+        <a moz-do-not-send="true"
+          href="https://security.appspot.com/vsftpd/IMPLEMENTATION.txt">implementation</a>,
+        and assumptions of <a moz-do-not-send="true"
+          href="https://security.appspot.com/vsftpd/TRUST.txt">trust</a>
+        (and their impact on the implementation).</li>
+      <li>Gary McGraw's book, <a moz-do-not-send="true"
+          href="http://www.swsec.com/">Software Security: Building
+          Security In</a>.</li>
+    </ul>
+    <h2>Quiz</h2>
+    The <a moz-do-not-send="true" href="assets/week4_quiz.docx">quiz
+      for this week</a> covers all of the material for this week.<br>
+    <h2>Project</h2>
+    There is <b>no new project</b> this week. Don't forget that <a
+      moz-do-not-send="true" href="project2_badstore.html">Project 2</a>
+    on exploiting web application vulnerabilities, issued last week, is
+    still outstanding, and is due in two weeks.
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>week3_web_security</title>
+  </head>
+  <body>
+    <h1>Week 3: Web Security</h1>
+    Now we move away from low-level security and turn our attention to
+    security on the worldwide web (WWW).<br>
+    <br>
+    The web utilizes a variety of technologies, from HTTP (hypertext
+    transfer protocol) and HTML (hypertext markup language) to SQL
+    (standard query language) and the Javascript programming language.
+    Unfortunately, these technologies can be used in ways that
+    constitute significant vulnerabilities. We will examine several
+    important kinds of vulnerabilities, see how they can be exploited,
+    and explore how to defend against them.<br>
+    <h2>Learning Objectives</h2>
+    After the completion of this week's material, you will be able to:<br>
+    <ul>
+      <li>Understand how <b>SQL injection</b> attacks affect web
+        application back ends</li>
+      <li>Understand how the web implements <i>session state</i>, using
+        <i>cookies</i> and <i>hidden form fields</i>, and how improper
+        implementations are subject to <b>session hijacking</b> and <b>Cross-site
+
+          Request Forgery (CSRF)</b> attacks</li>
+      <li>Understand how popular, browser-executed <i>Javascript</i>
+        programs can be used incorrectly by web sites, leading to <b>Cross-site
+
+          Scripting (XSS)</b> vulnerabilities</li>
+      <li>Avoid flaws and bugs that introduce these vulnerabilities,
+        with a focus on employing <b>input validation</b> and <b>sanitization</b></li>
+    </ul>
+    <h2>Video Lectures</h2>
+    <ul>
+      <li><a moz-do-not-send="true" href="assets/Security_Web.mp4">Security
+
+          for the Web: Introduction</a> (3:33)</li>
+      <li><a moz-do-not-send="true" href="assets/Web_Basics.mp4">Web
+          Basics</a> (10:31)</li>
+      <li><a moz-do-not-send="true" href="assets/SQL_injection.mp4">SQL
+          Injection</a> (10:35)</li>
+      <li><a moz-do-not-send="true"
+          href="assets/SQL_injection_countermeasures.mp4">SQL Injection
+          Countermeasures</a> (9:17)</li>
+      <li><a moz-do-not-send="true" href="assets/Web-based_state.mp4">Web-based
+
+          State Using Hidden Fields and Cookies</a> (13:51)</li>
+      <li><a moz-do-not-send="true" href="assets/Session_hijacking.mp4">Session
+
+          Hijacking</a> (6:56)</li>
+      <li><a moz-do-not-send="true" href="https://youtu.be/5ffy65DKAZw">Cross-site
+
+          Request Forgery (CSRF)</a> (6:36)</li>
+      <li><a moz-do-not-send="true" href="assets/Web_2.0.mp4">Web 2.0</a>
+        (5:16)</li>
+      <li><a moz-do-not-send="true" href="assets/XSS.mp4">Cross-site
+          Scripting</a> (13:39)</li>
+    </ul>
+    <h3>Break out: Interview with Kevin Haley</h3>
+    In March 2015, Mike had the pleasure of interviewing <a
+      moz-do-not-send="true" href="https://www.linkedin.com/in/khaley/">Kevin
+
+      Haley</a>. Kevin was a Director of Symantec Security Response. In
+    this interview we discussed the state of cybersecurity at that time:
+    the trends, the hacks, and the situations that define the state of
+    play in which technology developers and users find themselves. The
+    interview is optional from an assessment perspective -- there will
+    no quiz questions on it. We hope you find it interesting!<br>
+    <br>
+    <a moz-do-not-send="true" href="assets/Interview_Kevin_Haley.mp4">Mike
+
+      Hicks interviews Kevin Haley</a> (21:13). Highlights, indexed by
+    time:<br>
+    <ul>
+      <li>start-2:11 Kevin's background and early activities in security</li>
+      <li>2:11 Symantec's vantage point</li>
+      <li>4:14 Scope of the security threat</li>
+      <li>5:38 Commoditization of vulnerability exploitation</li>
+      <li>7:31 Vulnerabilities trending upward</li>
+      <li>8:16 Role and approach of anti-virus and related technologies</li>
+      <li>11:38 Advice on building secure systems, and education</li>
+      <li>16:14 The expanding security landscape</li>
+      <li>19:44-end Learning more</li>
+    </ul>
+    <h2>Readings</h2>
+    No readings are required for this week, but you may find the
+    following references helpful.<br>
+    <ul>
+      <li><a moz-do-not-send="true"
+          href="https://www.owasp.org/index.php/SQL_Injection">OWASP's
+          guide to SQL injection</a> - This is a good overview. You
+        might find the linked page on <a moz-do-not-send="true"
+href="https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/05-Testing_for_SQL_Injection">Testing
+
+          for SQL injection</a> to be useful for the project.</li>
+      <li><a moz-do-not-send="true"
+          href="http://ferruh.mavituna.com/sql-injection-cheatsheet-oku/">SQL
+
+          injection cheat sheet</a> - This is a good reference for doing
+        SQL injection</li>
+      <li><a moz-do-not-send="true"
+          href="https://owasp.org/www-community/attacks/xss/">OWASP's
+          guide to cross-site scripting (XSS)</a> - Pay particular
+        attention to the testing guide, for finding XSS vulnerabilities.</li>
+      <li><a moz-do-not-send="true"
+          href="https://www.owasp.org/index.php/Session_hijacking_attack">OWASP's
+
+          guide to session hijacking</a> - Note that they give an
+        example of stealing a session cookie via XSS, which is in play
+        for the project.</li>
+      <li><a moz-do-not-send="true"
+          href="https://owasp.org/www-community/attacks/csrf">OWASP's
+          guide to cross-site request forgery (CSRF)</a></li>
+      <li><a moz-do-not-send="true" href="http://cwe.mitre.org/top25/">CWE/SANS
+
+          top 25 most dangerous software errors</a> - past versions are
+        <a moz-do-not-send="true"
+          href="https://cwe.mitre.org/top25/archive/">archived</a>.</li>
+    </ul>
+    <h2>Quiz</h2>
+    The <a moz-do-not-send="true" href="assets/week3_quiz.docx">quiz
+      for this week</a> covers all of the material for this week. You
+    must submit the quiz no later than the start of week 5.<br>
+    <h2>Project</h2>
+    The <a moz-do-not-send="true" href="project3_badstore.html">second
+      project</a> tests your ability to exploit vulnerabilities in a web
+    application called BadStore. It is due in three weeks, at the start
+    of week 6. You will complete the work for the project on your own
+    computer, and then take the <a moz-do-not-send="true"
+      href="assets/week3_badstore_quiz.docx">on-line assessment</a> to
+    show that you've done so.
+  </body>
+</html>

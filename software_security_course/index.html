@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>overview</title>
+  </head>
+  <body>
+    <h1>Software Security On-line Course<br>
+    </h1>
+    <br>
+    This course, originally developed in late 2014 and early 2015 for <a
+      moz-do-not-send="true" href="https://coursera.org/">Coursera</a>
+    as part of the <a moz-do-not-send="true"
+      href="https://www.umd.edu/">University of Maryland</a>'s<b> </b>four-course
+
+    specialization on cybersecurity, explores the <b>foundations of
+      software security</b>. The course is old enough now that I don't
+    feel comfortable charging money for it, so it is here hosted for
+    free. See <a moz-do-not-send="true"
+      href="index.html#Note_about_Course_Content_written_in">more on the
+      current state of the course content, and <b>invitation for
+        contributions</b>, below</a>.<br>
+    <br>
+    The course considers important software vulnerabilities and attacks
+    that exploit them, such as
+    <i> buffer overflows</i>, <i>SQL injection</i>, and <i>session
+      hijacking</i>. The course also considers defenses that prevent or
+    mitigate these attacks, including <i>advanced testing</i> and <i>program
+      analysis</i> techniques. We take a <b>build security in</b>
+    mentality, considering techniques at each phase of the development
+    cycle that can be used to strengthen the security of software
+    systems.<br>
+    <br>
+    A video overview of the course is presented in the following
+    lectures. The first two present an overview of cybersecurity
+    generally, and software security in particular. The last is an
+    overview of the course content, and a description of the learner's
+    expected background.<br>
+    <ul>
+      <li><a moz-do-not-send="true" href="assets/Intro_part_1.mp4">Introducing
+
+
+          computer security</a> (6:17)</li>
+      <li><a moz-do-not-send="true" href="assets/Intro_part_2.mp4">What
+          is software security?</a> (7:48)</li>
+      <li><a moz-do-not-send="true" href="assets/Intro_part_3.mp4">Tour
+          of the course and expected background</a> (11:37)</li>
+    </ul>
+    <ul>
+    </ul>
+    <h2>Topics</h2>
+    The content of the course is as follows, with one topic per week
+    linked to the relevant material:<br>
+    <ol>
+      <li><a moz-do-not-send="true"
+          href="week1_memory_based_attacks.html"><b>Low-level,
+            memory-based attacks</b></a>, including stack smashing,
+        format string attacks, stale memory access attacks, and
+        return-oriented Programming (ROP)</li>
+      <li><a moz-do-not-send="true"
+          href="week2_defenses_low_level_attacks.html"><b>Defenses
+            against memory-based attacks</b></a>, including stack
+        canaries, non-executable data (aka W+X or DEP), address space
+        layout randomization (ASLR), memory-safety enforcement (e.g.,
+        SoftBound), control-flow Integrity (CFI)</li>
+      <li><a moz-do-not-send="true" href="week3_web_security.html"><b>Web
+            security</b></a>, covering attacks like SQL injection, <b>c</b>ross-site
+        scripting (XSS), cross-site request forgery (CSRF), and session
+        hijacking, and defenses that have in common the idea of input
+        validation</li>
+      <li><a moz-do-not-send="true"
+          href="week4_building_secure_software.html"><b>Secure design</b></a>,
+        covering ideas like threat modeling and security design
+        principles, including organizing ideas like favor simplicity,
+        trust with reluctance, and defend in depth; we present
+        real-world examples of good and bad designs</li>
+      <li><a moz-do-not-send="true"
+          href="week5_automated_reasoning_for_security.html"><b>Automated
+            reasoning for code security</b></a>, presenting foundations
+        and tradeoffs and using static taint analysis and whitebox fuzz
+        testing as detailed examples</li>
+      <li><a moz-do-not-send="true" href="week6_pen_testing.html"><b>Penetration
+            testing and fuzz testing</b></a>, presenting an overview of
+        goals, techniques, and tools of the trade</li>
+    </ol>
+    <p>We have put together a <a moz-do-not-send="true"
+        href="glossary.html">glossary of terms</a> that you might find
+      useful while going through the course.<br>
+    </p>
+    <ol>
+    </ol>
+    <h2>Projects and Assessment<br>
+    </h2>
+    There is a quiz for each week's materials. Each quiz is stored in a
+    Microsoft Word .docx file, which includes both the questions and the
+    answer. (I didn't find time to split them apart.)<br>
+    <br>
+    The course also has three projects.<br>
+    <ol>
+      <li><a moz-do-not-send="true" href="project1_buffer_overflow.html"><b>Buffer
+
+
+            overflow attacks</b></a>: The lab walks you through how a
+        buffer overflow occurs, and how it can be exploited.</li>
+      <li><a moz-do-not-send="true" href="project2_badstore.html"><b>Web
+            application security</b></a>: The lab asks you to find and
+        exploit common vulnerabilities in web applications, like SQL
+        injection and cross-site scripting</li>
+      <li><a moz-do-not-send="true" href="project3_fuzz_testing.html"><b>Static
+            analysis for finding security bugs</b></a>: The lab will
+        give you some experience using tools that aim to find security
+        flaws automatically</li>
+    </ol>
+    To do the projects, you will need to install the <a
+      moz-do-not-send="true" href="https://www.virtualbox.org/">Virtual
+      Box</a> virtual machine management software (which is free) on
+    your own computer. Projects will be in VM images running <a
+      moz-do-not-send="true" href="http://www.ubuntu.com/">Ubuntu Linux</a>;
+    you will install these images and run them to do the projects.
+    Detailed instructions for doing so are on the relevant project
+    pages.<br>
+    <h2>Expected Background<br>
+    </h2>
+    Successful learners in this course typically have completed
+    sophomore/junior-level undergraduate work in a technical field, have
+    some <b>familiarity with programming</b>, ideally in C/C++ and one
+    other "managed" program language (like Python or Java), and have
+    prior exposure to algorithms. Students not familiar with these
+    languages but with others can improve their skills through online
+    web tutorials. <br>
+    <br>
+    To test whether you have sufficient background to take the course,
+    we recommend students take the <b><a moz-do-not-send="true"
+        href="assets/qualifying_quiz.docx">qualifying quiz</a></b>.
+    Students who score less than 70% on the quiz may have difficulty
+    with the technical concepts assumed by the presentations. (Note that
+    the quiz does not count toward your final grade.) Much of the quiz
+    is about <b>C programming</b>; most of the code in the course will
+    be presented in C. <i>For the first two weeks, this is critical</i>:
+    the low-level errors and defenses against them are germane to C and
+    low-level programming. Students comfortable in other languages may
+    be able to learn the necessary C concepts on their own. One book I
+    recommend is K.A. Reek's <a moz-do-not-send="true"
+      href="http://www.cs.rit.edu/~kar/pointers.on.c/">Pointers on C</a>.
+    Several previous students of this course recommended the free book,
+    <a moz-do-not-send="true" href="https://learncodethehardway.org/c/">Learning
+
+
+
+      C the Hard Way</a>.<br>
+    <br>
+    <h2><a name="Note_about_Course_Content_written_in"></a>Note about
+      course content, and call for corrections<br>
+    </h2>
+    This course was originally put together in late 2014 and early 2015.
+    Fortunately (for learning, not for security!), much of the course's
+    core content is still relevant as of early 2024: The examples and
+    some details are now nearly 10 years old, but the same sorts of
+    vulnerabilities, attacks, defenses, methodologies, and technologies
+    are still relevant. <br>
+    <br>
+    Some readings such as this one have
+    some added discussion and links to newer versions, or generations,
+    of tools and technologies, and/or writeups about them. The first
+    such updates were made in 2020, and some of these links may be dead
+    or out of date. <b>I welcome corrections and contributions!</b> If
+    you come across a dead/wrong link or would like to suggest some
+    commentary to add, please either <b>e-mail me</b> (mwh@cs.umd.edu)
+    or better yet, make the suggested change and <b>submit a pull
+      request on GitHub</b>, where these course materials are hosted.<br>
+    <h3>Errata</h3>
+    <p>There are some small mistakes in the video lectures for the
+      course, identified below.<br>
+    </p>
+    <h4>Week 1</h4>
+    <ul>
+      <li><i><b>Other memory exploits</b></i> lecture: Slide 5 (titled
+        Heap overflow variants) in the recorded lecture implies that all
+        C++ objects have vtables, but in fact only those with virtual
+        methods do. This point has been corrected in the (downloadable)
+        PDF version of the slides.</li>
+    </ul>
+    <h4>Week 2</h4>
+    <ul>
+      <li><b><i>Week 2 Intro slide implies ROP bypasses stack cookies
+            and ASLR</i></b>. The discussion was meant as a transition
+        to thinking about more sophisticated attacks, but then seemed to
+        imply that ROP is more powerful than it is. ROP is a way to
+        overcome defenses against jumping to particular libc functions,
+        by reusing together code fragments rather than whole functions.
+        It does not bypass stack cookies or ASLR.</li>
+      <li><b>There is a typo in the secure coding lecture, "Design vs
+          Implementation."</b> Should be "consistent" instead of
+        "consonant". This is fixed in the PDF slides.</li>
+    </ul>
+    <h4>Week 5</h4>
+    <ul>
+      <li><b>Taintedness as a lattice</b>. In the flow analysis lecture,
+        at time 5:00, Mike mis-speaks and says that tainted is less than
+        untainted, which is wrong; it's the other way around. Note that
+        he corrects himself immediately afterwards, and the slides are
+        correct.</li>
+    </ul>
+  </body>
+</html>
